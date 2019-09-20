@@ -1,0 +1,55 @@
+(assumes WSL on windows)
+1. Install zsh. Visit https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH
+2. Install oh-my-zsh. Visit https://github.com/robbyrussell/oh-my-zsh
+3. Install extraterm. Visit https://extraterm.org/
+	1. Set up themes
+		1. Set the theme to solarized dark
+		2. Set the editor theme to solarized dark
+	2. Set up shell
+		1. Go to the session types tab
+		2. Under WSL choose other for the shell
+		3. Set it to /bin/zsh
+	3. Set up the font
+		1. I'm using Inconsolata NF Medium in Nerd Fonts
+		2. Go to https://github.com/ryanoasis/nerd-fonts
+		3. In the fonts list, choose Inconsolata
+		4. Choose the Inconsolata Complete Windows Compatible file in the complete folder
+		5. Alternatively, the otf file is here too
+		6. Click on the OTF file to install it
+		7. Install the OTF file by clicking on it
+		8. Go to appearances in extraterm and choose Inconsolata NF
+4. Install Powerlevel10k (included in .oh-my-zsh folder, .zshrc, and .p10k.zsh)
+	1. Powerlevel10k is just powerlevel9k but faster. See both https://github.com/Powerlevel9k/powerlevel9k and https://github.com/romkatv/powerlevel10k
+	2. Install p10k using the instructions in the Github for ohmyzsh
+	3. Follow the configuration wizard and choose what you want. To run in again use p10k configure
+	4. The segments I chose in the p10k configuration are in the text file call p10k config. Just copy paste that part of the config over the existing part
+5. zsh plugins (including in .oh-my-zsh folder and .zshrc)
+	1. Install zsh-syntax-highlighting using the oh-my-zsh instructions. See https://github.com/zsh-users/zsh-syntax-highlighting
+	2. Install zsh-autosuggestions using the oh-my-zsh instructions. See https://github.com/zsh-users/zsh-autosuggestions
+6. Install fzf using the git script. See https://github.com/junegunn/fzf
+	1. Say yes to all config options
+7. Install vim. (you can use sudo apt-get, but if it doesn't work you'll have to search online. You shouldn't have to build from the source)
+	1. Use the vimrc included here
+	2 Vim instructions: https://danielmiessler.com/study/vim/
+8. Vim plugins. Use the pathogen install instructions for all the vimawesome pages (included in .vim and .vimrc)
+	1. Install pathogen (this must be done before the others). See https://github.com/tpope/vim-pathogen
+		1. execute pathogen#infect() to the vimrc
+	2. Install solarized dark. See https://vimawesome.com/plugin/solarized-8
+		1. Add the folowing to your vimrc
+			set termguicolors
+			set background=dark
+			colorscheme solarized8
+	3. Install nerdtree. See https://vimawesome.com/plugin/nerdtree-red
+		1. Add "nnoremap <F2> :NERDTreeToggle<CR>" to your vimrc
+		2. This will allow you to use NERDTree with f2
+	4. Install supertab. See https://vimawesome.com/plugin/supertab
+	5. Install Auto Pairs. See https://vimawesome.com/plugin/auto-pairs
+	7. Install NERDCommenter. See https://vimawesome.com/plugin/the-nerd-commenter
+9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
+	1. Since we're on zsh, make sure to put "eval $( dircolors -b $HOME/.dircolors )" in .zshrc
+10. Aliases (included in 
+	1. Aliases are super helpful for getting things done faster
+	2. Create a files .aliases, .windows-aliases (for windows only), and .linux-aliases (for linux only) in your home
+	3. Make sure .aliases sources the other alias files depending on OS
+	4. Add "source $HOME/.aliases" to your .zshrc
+
