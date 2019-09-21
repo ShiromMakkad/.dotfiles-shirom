@@ -47,7 +47,7 @@
 	7. Install NERDCommenter. See https://vimawesome.com/plugin/the-nerd-commenter
 9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
 	1. Since we're on zsh, make sure to put "eval $( dircolors -b $HOME/.dircolors )" in .zshrc
-10. Aliases (included in 
+10. Aliases (included in .windows-aliases, .aliases, .linux-aliases, .zshrc)
 	1. Aliases are super helpful for getting things done faster
 	2. Create a files .aliases, .windows-aliases (for windows only), and .linux-aliases (for linux only) in your home
 	3. Make sure .aliases sources the other alias files depending on OS
