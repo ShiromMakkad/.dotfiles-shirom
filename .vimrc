@@ -11,3 +11,8 @@ nnoremap <F2> :NERDTreeToggle<CR>
 set termguicolors
 set background=dark
 colorscheme solarized8
+
+set number relativenumber 
+
+" Speeds up relative line numbers
+set re=1 
