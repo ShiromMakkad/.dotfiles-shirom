@@ -30,3 +30,11 @@ set number relativenumber
 
 " Speeds up relative line numbers
 set re=1 
+
+" Lightline config
+set laststatus=2
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"  },
+      \ }
