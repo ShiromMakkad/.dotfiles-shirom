@@ -40,9 +40,14 @@
 	2. Install zsh-autosuggestions using the oh-my-zsh instructions. See https://github.com/zsh-users/zsh-autosuggestions
 6. Install fzf using the git script. See https://github.com/junegunn/fzf
 	1. Say yes to all config options
-7. Install vim. (you can use sudo apt-get, but if it doesn't work you'll have to search online. You shouldn't have to build from the source)
-	1. Use the vimrc included here
-	2 Vim instructions: https://danielmiessler.com/study/vim/
+7. Install vim.
+	1. Installation
+		1. Use a PPA for the latest version. The reason I use the latest version is so that relative line numbers are WAY faster
+		2. sudo add-apt-repository ppa:jonathonf/vim
+		3. sudo apt update
+		4. sudo apt install vim
+	2. Use the vimrc included here
+	3 Vim instructions: https://danielmiessler.com/study/vim/
 8. Vim plugins. Use the pathogen install instructions for all the vimawesome pages (included in .vim and .vimrc)
 	1. Install pathogen (this must be done before the others). See https://github.com/tpope/vim-pathogen
 		1. execute pathogen#infect() to the vimrc
