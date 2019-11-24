@@ -18,11 +18,23 @@
 		6. Click on the OTF file to install it
 		7. Install the OTF file by clicking on it
 		8. Go to appearances in extraterm and choose Inconsolata NF
+3 (alt). Install Windows Terminal from the Microsoft store.
+	1. Set up the theme by copying profiles.json and overwriting the default one in settings
+	2. Set up the font
+		1. I'm using Inconsolata NF Medium in Nerd Fonts
+		2. Go to https://github.com/ryanoasis/nerd-fonts
+		3. In the fonts list, choose Inconsolata
+		4. Choose the Inconsolata Complete Windows Compatible file in the complete folder (Make sure it's mono)
+		5. Alternatively, the otf file is here too
+		6. Click on the OTF file to install it
+		7. Install the OTF file by clicking on it
+		8. Go to appearances in extraterm and choose Inconsolata NF
 4. Install Powerlevel10k (included in .oh-my-zsh folder, .zshrc, and .p10k.zsh)
 	1. Powerlevel10k is just powerlevel9k but faster. See both https://github.com/Powerlevel9k/powerlevel9k and https://github.com/romkatv/powerlevel10k
 	2. Install p10k using the instructions in the Github for ohmyzsh
 	3. Follow the configuration wizard and choose what you want. To run in again use p10k configure
 	4. The segments I chose in the p10k configuration are in the text file call p10k config. Just copy paste that part of the config over the existing part
+	5. I also have some custom theming for One dark. The default looks good too. 
 5. zsh plugins (including in .oh-my-zsh folder and .zshrc)
 	1. Install zsh-syntax-highlighting using the oh-my-zsh instructions. See https://github.com/zsh-users/zsh-syntax-highlighting
 	2. Install zsh-autosuggestions using the oh-my-zsh instructions. See https://github.com/zsh-users/zsh-autosuggestions
@@ -34,17 +46,21 @@
 8. Vim plugins. Use the pathogen install instructions for all the vimawesome pages (included in .vim and .vimrc)
 	1. Install pathogen (this must be done before the others). See https://github.com/tpope/vim-pathogen
 		1. execute pathogen#infect() to the vimrc
-	2. Install solarized dark. See https://vimawesome.com/plugin/solarized-8
+	2. Install One dark theme. https://github.com/joshdick/onedark.vim 
 		1. Add the folowing to your vimrc
 			set termguicolors
 			set background=dark
-			colorscheme solarized8
-	3. Install nerdtree. See https://vimawesome.com/plugin/nerdtree-red
+			colorscheme onedark 
+	3. Install nerdtree. This adds a file tree to the left. See https://vimawesome.com/plugin/nerdtree-red
 		1. Add "nnoremap <F2> :NERDTreeToggle<CR>" to your vimrc
 		2. This will allow you to use NERDTree with f2
-	4. Install supertab. See https://vimawesome.com/plugin/supertab
-	5. Install Auto Pairs. See https://vimawesome.com/plugin/auto-pairs
-	7. Install NERDCommenter. See https://vimawesome.com/plugin/the-nerd-commenter
+	4. Install Auto Pairs. This adds auto completes quotes and brackets. See https://vimawesome.com/plugin/auto-pairs
+	5. Install Vim commentary. This adds some easy shortcuts for commenting. See https://github.com/scrooloose/nerdcommenter
+	6. Install Lightline. This add the bar to the top and bottom which give you a ton of information and look good. See https://github.com/itchyny/lightline.vim
+		1. See the .vimrc for the config for this. It's long and I copied from somewhere else. You can see that in the .vimrc. 
+		2. The only thing you have to do is set the color scheme, seperators, and subseperators which you can see in the .vimrc 
+	7. Install Vim Devicons. This adds icons to Nerdtree and lightline (and a bunch more, but I don't use them). See https://github.com/ryanoasis/vim-devicons
+	8. Install Vim Fugitive. This adds a lot of git features to Vim, but I don't use any of them rn. I just got it so that lightline can poll the current git status. See https://github.com/tpope/vim-fugitive
 9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
 	1. Since we're on zsh, make sure to put "eval $( dircolors -b $HOME/.dircolors )" in .zshrc
 10. Aliases (included in .windows-aliases, .aliases, .linux-aliases, .zshrc)
