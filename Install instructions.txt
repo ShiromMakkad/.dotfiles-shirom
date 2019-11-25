@@ -61,9 +61,7 @@
 		2. This will allow you to use NERDTree with f2
 	4. Install Auto Pairs. This adds auto completes quotes and brackets. See https://vimawesome.com/plugin/auto-pairs
 	5. Install Vim commentary. This adds some easy shortcuts for commenting. See https://github.com/scrooloose/nerdcommenter
-	6. Install Lightline. This add the bar to the top and bottom which give you a ton of information and look good. See https://github.com/itchyny/lightline.vim
-		1. See the .vimrc for the config for this. It's long and I copied from somewhere else. You can see that in the .vimrc. 
-		2. The only thing you have to do is set the color scheme, seperators, and subseperators which you can see in the .vimrc 
+	6. Install Vim-airline. This add the bar to the top and bottom which give you a ton of information and look good. See https://github.com/vim-airline/vim-airline.git 
 	7. Install Vim Devicons. This adds icons to Nerdtree and lightline (and a bunch more, but I don't use them). See https://github.com/ryanoasis/vim-devicons
 	8. Install Vim Fugitive. This adds a lot of git features to Vim, but I don't use any of them rn. I just got it so that lightline can poll the current git status. See https://github.com/tpope/vim-fugitive
 9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
