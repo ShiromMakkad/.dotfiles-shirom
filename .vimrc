@@ -52,3 +52,14 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " Removes the part of the bar that tells you that you whether you're in a utf-8 or Ascii doc (etc.). I've never needed that information
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+
+" Tmuxline config
+let g:tmuxline_preset = {
+      \'a'    : '\uf31b #H',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x' : ['\uf9c4 RAM:#(free -m -h | grep Mem | cut -d " " -f28)', "\ue266 CPU:#(mpstat 2 1 | awk '$12 ~ /[0-9.]+/ { print 100 - $12 }')%", '\uf578 #(cat /sys/class/power_supply/battery/capacity)%'],
+      \'y'    : '\uf64f %R',
+      \'z'    : ['\uf133 %a #(date "+%m/%d/%y")'], 
+      \'options' : {'status-justify' : 'left'}}
