@@ -1,7 +1,7 @@
-cd ~
-cp -a .dotfiles-shirom/. ~
 sudo chmod +x setup.sh
 ./setup.sh
+cd ~
+cp -a .dotfiles-shirom/. ~
 rm "Install instructions.txt"
 rm "p10k config.txt"
 rm setup.sh
