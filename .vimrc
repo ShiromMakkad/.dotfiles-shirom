@@ -4,6 +4,9 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8
 set clipboard=unnamedplus 
+set tabstop=4
+set shiftwidth=4
+set expandtab
 nnoremap <F2> :NERDTreeToggle<CR>
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
