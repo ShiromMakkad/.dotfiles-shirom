@@ -24,7 +24,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme onedark
+colorscheme base16-monokai 
 
 " Make vim look right in tmux
 set background=dark
@@ -34,7 +34,7 @@ set number relativenumber
 
 " Airline config
 let g:airline#extensions#tabline#enabled = 1 " Turns on the tabline up top
-let g:airline_theme='onedark'
+let g:airline_theme='base16_monokai'
 " Adds the angled seperators
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
