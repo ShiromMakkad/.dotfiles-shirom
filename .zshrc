@@ -108,6 +108,9 @@ source $HOME/.aliases
 # For lS_Colors
 eval $( dircolors -b $HOME/.dircolors )
 
+# For Tmux Colors (since they're set through a vim plugin)
+vim -E -c sfgdgsdf -c q
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
