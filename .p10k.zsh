@@ -553,8 +553,8 @@
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
 
   # Context color when running with privileges.
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=1
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=168
   # Context format when running with privileges: %n is username, %m is hostname.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
 

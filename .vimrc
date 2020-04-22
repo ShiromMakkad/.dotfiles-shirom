@@ -9,6 +9,9 @@ set shiftwidth=4
 set expandtab
 nnoremap <F2> :NERDTreeToggle<CR>
 
+" Mouse support
+set mouse=a
+
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 " Speeds up relative line numbers set re=1
