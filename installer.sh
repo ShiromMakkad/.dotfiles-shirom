@@ -88,6 +88,11 @@ do
 done
 
 cd "$(dirname "$0")"
+
+echo "Installing plugins..."
+git submodule update --init --recursive --remote
+echo "Plugins installed!"
+
 sudo cp -a dotfiles/. /home/shirom
 cp -r .personalrc ~
 
