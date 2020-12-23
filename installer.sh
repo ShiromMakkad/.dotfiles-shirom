@@ -88,7 +88,7 @@ do
 done
 
 cd "$(dirname "$0")"
-cp -a dotfiles/. /home/shirom
+sudo cp -a dotfiles/. /home/shirom
 cp -r .personalrc ~
 
 echo "Done!"
