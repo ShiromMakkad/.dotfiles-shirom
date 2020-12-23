@@ -9,6 +9,27 @@ set shiftwidth=4
 set expandtab
 nnoremap <F2> :NERDTreeToggle<CR>
 
+" Highlight search resuls
+set hlsearch
+
+" Iterate through search results
+set incsearch
+
+" Always show 7 lines above and below
+set so=7
+
+" Center search results
+nmap n nzz
+nmap N Nzz
+
+" Automatically indent code when going to the next line
+set autoindent
+
+" jump to the previous function
+noremap 99 [{
+" jump to the next function
+noremap 00 ]}
+
 " Mouse support
 set mouse=a
 

@@ -1,5 +1,0 @@
-#add aliases here
-
-#uncomment based on OS
-source $HOME/.windows-aliases
-#source $HOME/.linux-aliases
