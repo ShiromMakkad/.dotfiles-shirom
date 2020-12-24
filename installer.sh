@@ -3,7 +3,7 @@
 dir_exec() {
     cd "$(dirname "$0")"
     # Copy over every rc file to .personalrc
-    find "$os_dir" -maxdepth 1 -name "*rc" -exec cp {} ./.personalrc \;
+    find "$os_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
     # Run every setup.sh
     if [[ install -eq 1 ]]; then 
         find $os_dir -maxdepth 1 -name 'setup.sh' -exec {} \;
@@ -108,8 +108,7 @@ echo "Installing plugins..."
 git submodule update --init --recursive --remote
 echo "Plugins installed!"
 
-sudo cp -a dotfiles/. /home/shirom
-cp -r .personalrc ~
-find ./.personalrc -maxdepth 1 ! -name 'generalrc' ! -name 'systemrc' -type f -exec rm -v {} + > /dev/null
+cp -a dotfiles/. /home/shirom
+cp -rn .personalrc ~
 
 echo "Done! Run this script again to update. "

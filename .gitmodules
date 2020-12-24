@@ -40,3 +40,6 @@
 [submodule "dotfiles/.vim/bundle/vim-multiple-cursors"]
 	path = dotfiles/.vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "dotfiles/.tmux/plugins/tpm"]
+	path = dotfiles/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
