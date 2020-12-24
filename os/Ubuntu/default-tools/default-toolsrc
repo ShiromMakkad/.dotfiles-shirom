@@ -1,3 +1,4 @@
+source "$(dirname $(readlink -f $0))/lazy_loader.sh"
 
 # load nvm
 declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
@@ -28,3 +29,11 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Lazy load rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+rbenv_init() {
+    eval "$(rbenv init -)"
+}
+
+lazy_load rbenv_init rbenv bundle bundler gem irb rake ruby
