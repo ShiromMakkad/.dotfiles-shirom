@@ -43,11 +43,7 @@
 		4. sudo apt install vim
 	2. Use the vimrc included here
 	3 Vim instructions: https://danielmiessler.com/study/vim/
-8. Install tmux
-	1. sudo apt-get install tmux
-	2. Install sysstat. This is for the cpu usage display for tmux
-		1. sudo apt-get install sysstat
-9. Vim plugins. Use the pathogen install instructions for all the vimawesome pages (included in .vim and .vimrc)
+8. Vim plugins. Use the pathogen install instructions for all the vimawesome pages (included in .vim and .vimrc)
 	1. Install pathogen (this must be done before the others). See https://github.com/tpope/vim-pathogen
 		1. execute pathogen#infect() to the vimrc
 	2. Install Base 16 Monokai theme. https://github.com/tpope/vim-commentary
@@ -63,6 +59,15 @@
 	6. Install Vim Devicons. This adds icons to Nerdtree and lightline (and a bunch more, but I don't use them). See https://github.com/ryanoasis/vim-devicons
 	7. Install Vim Fugitive. This adds a lot of git features to Vim, but I don't use any of them now. I just got it so that lightline can poll the current git status. See https://github.com/tpope/vim-fugitive
 	8. Install tmuxline. It will deal with all the customization for tmux. See https://github.com/edkolev/tmuxline.vim
+	9. There are other general use, non aesthetic vim plugins. Check .vim/bundle for the list
+9. Install tmux
+	1. sudo apt-get install tmux
+	2. Install sysstat. This is for the cpu usage display for tmux
+		1. sudo apt-get install sysstat
+10. Install Tmux plugins
+	1. Install tpm (tmux plugin manager). See https://github.com/tmux-plugins/tpm
+	2. Install tmux-yank for copy-pasting. See https://github.com/tmux-plugins/tmux-yank
+	3. There are other general use, non aesthetic tmux plugins. Check .tmunk.conf for the list
 9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
 	1. Since we're on zsh, make sure to put "eval $( dircolors -b $HOME/.dircolors )" in .zshrc
 10. Personalrc
