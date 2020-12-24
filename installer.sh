@@ -5,20 +5,27 @@ dir_exec() {
     # Copy over every rc file to .personalrc
     find "$os_dir" -maxdepth 1 -name "*rc" -exec cp {} ./.personalrc \;
     # Run every setup.sh
-    find $os_dir -maxdepth 1 -name 'setup.sh' -exec {} \;
+    if [[ install -eq 1 ]]; then 
+        find $os_dir -maxdepth 1 -name 'setup.sh' -exec {} \;
+    fi
 }
 
 tools() {
-    os_dir="${os_dir}/default-tools"
-    dir_exec
+    if [[ $tools -eq 1 ]]
+    then
+        os_dir="${os_dir}/default-tools"
+        dir_exec
+    fi
 }
 
 tools_prompt() {
-    read -p "Would you like to install tools? (ex. NVM, Anaconda, etc.) (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        tools=1
+    if [[ install -eq 1 ]]; then 
+        read -p "Would you like to install tools? (ex. NVM, Anaconda, etc.) (y/n) " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            tools=1
+        fi
     fi
 }
 
@@ -35,10 +42,7 @@ ubuntu() {
     os_dir=./os/Ubuntu
     dir_exec
 
-    if [[ $tools -eq 1 ]]
-    then
-        tools
-    fi
+    tools
 }
 
 raspbian() {
@@ -61,6 +65,15 @@ wsl_prompt() {
     fi
 }
 
+installer_prompt() {
+    read -p "Would you like to install programs? (rather than just copy the dotfiles and plugins) (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        install=1
+    fi
+}
+
 if [[ "$EUID" -eq 0 ]]; then 
     echo "Do not run with sudo!"
     exit
@@ -72,6 +85,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Ubuntu")
+            installer_prompt
             wsl_prompt
             ubuntu
             if [[ wsl -eq 1 ]]; then
@@ -80,6 +94,7 @@ do
             break
             ;;
         "Raspbian")
+            installer_prompt
             raspbian
             break
             ;;
@@ -95,5 +110,6 @@ echo "Plugins installed!"
 
 sudo cp -a dotfiles/. /home/shirom
 cp -r .personalrc ~
+find ./.personalrc -maxdepth 1 ! -name 'generalrc' ! -name 'systemrc' -type f -exec rm -v {} + > /dev/null
 
 echo "Done!"
