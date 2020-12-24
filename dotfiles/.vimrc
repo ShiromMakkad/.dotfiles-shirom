@@ -1,18 +1,21 @@
 execute pathogen#infect()
 
+" Make p no longer overwrite copy
+xmap p <Plug>ReplaceWithRegisterVisual
+
 " Set leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " Easymotion bindings
-nmap s <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
 
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 
-nmap <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>w <Plug>(easymotion-bd-w)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
 let g:EasyMotion_smartcase = 1
@@ -43,9 +46,12 @@ nmap N Nzz
 set autoindent
 
 " jump to the previous function
-noremap 99 [{
+noremap 88 [{
 " jump to the next function
-noremap 00 ]}
+noremap 99 ]}
+
+" Set relative line numbers
+set number relativenumber 
 
 " Mouse support
 set mouse=a
@@ -72,9 +78,6 @@ colorscheme base16-monokai
 
 " Make vim look right in tmux
 set background=dark
-
-" Set relative line numbers
-set number relativenumber 
 
 " Airline config
 let g:airline#extensions#tabline#enabled = 1 " Turns on the tabline up top
