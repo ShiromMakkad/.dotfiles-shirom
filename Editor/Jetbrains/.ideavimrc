@@ -1,0 +1,44 @@
+set commentary
+set easymotion
+set exchange
+set highlightedyank
+set multiple-cursors
+set ReplaceWithRegister
+
+" Make p no longer overwrite copy
+xmap p <Plug>ReplaceWithRegisterVisual
+
+" Set leader to space
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+" Easymotion bindings
+nmap s <Plug>(easymotion-s)
+nmap <Leader>w <Plug>(easymotion-bd-w)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
+let g:EasyMotion_smartcase = 1
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Always show 7 lines above and below
+set so=7
+
+" Center search results
+nmap n nzz
+nmap N Nzz
+
+" jump to the previous function
+noremap 99 [{
+" jump to the next function
+noremap 00 ]}
+
+" Set relative line numbers
+set number relativenumber 
