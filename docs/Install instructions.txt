@@ -58,12 +58,11 @@
 	3. Install nerdtree. This adds a file tree to the left. See https://vimawesome.com/plugin/nerdtree-red
 		1. Add "nnoremap <F2> :NERDTreeToggle<CR>" to your vimrc
 		2. This will allow you to use NERDTree with f2
-	4. Install Auto Pairs. This adds auto completes quotes and brackets. See https://vimawesome.com/plugin/auto-pairs
-	5. Install Vim commentary. This adds some easy shortcuts for commenting. See https://github.com/scrooloose/nerdcommenter
-	6. Install Vim-airline. This add the bar to the top and bottom which give you a ton of information and look good. See https://github.com/vim-airline/vim-airline.git 
-	7. Install Vim Devicons. This adds icons to Nerdtree and lightline (and a bunch more, but I don't use them). See https://github.com/ryanoasis/vim-devicons
-	8. Install Vim Fugitive. This adds a lot of git features to Vim, but I don't use any of them rn. I just got it so that lightline can poll the current git status. See https://github.com/tpope/vim-fugitive
-	9. Install tmuxline. It will deal with all the customization for tmux. See https://github.com/edkolev/tmuxline.vim
+	4. Install Vim commentary. This adds some easy shortcuts for commenting. See https://github.com/scrooloose/nerdcommenter
+	5. Install Vim-airline. This add the bar to the top and bottom which give you a ton of information and look good. See https://github.com/vim-airline/vim-airline.git 
+	6. Install Vim Devicons. This adds icons to Nerdtree and lightline (and a bunch more, but I don't use them). See https://github.com/ryanoasis/vim-devicons
+	7. Install Vim Fugitive. This adds a lot of git features to Vim, but I don't use any of them now. I just got it so that lightline can poll the current git status. See https://github.com/tpope/vim-fugitive
+	8. Install tmuxline. It will deal with all the customization for tmux. See https://github.com/edkolev/tmuxline.vim
 9. Install LS_Colors. See https://github.com/trapd00r/LS_COLORS (included in .dircolors and .zshrc)
 	1. Since we're on zsh, make sure to put "eval $( dircolors -b $HOME/.dircolors )" in .zshrc
 10. Personalrc

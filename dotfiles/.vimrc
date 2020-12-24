@@ -1,5 +1,22 @@
 execute pathogen#infect()
 
+" Set leader to space
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+" Easymotion bindings
+nmap s <Plug>(easymotion-s)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+nmap <Leader>w <Plug>(easymotion-bd-w)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
+let g:EasyMotion_smartcase = 1
+
 filetype plugin indent on
 syntax on
 set encoding=utf-8
