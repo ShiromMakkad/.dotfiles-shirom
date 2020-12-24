@@ -112,4 +112,4 @@ sudo cp -a dotfiles/. /home/shirom
 cp -r .personalrc ~
 find ./.personalrc -maxdepth 1 ! -name 'generalrc' ! -name 'systemrc' -type f -exec rm -v {} + > /dev/null
 
-echo "Done!"
+echo "Done! Run this script again to update. "
