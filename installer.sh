@@ -111,4 +111,6 @@ echo "Plugins installed!"
 cp -a dotfiles/. /home/shirom
 cp -rn .personalrc ~
 
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
 echo "Done! Run this script again to update. "

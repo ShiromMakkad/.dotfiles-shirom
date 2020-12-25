@@ -43,3 +43,6 @@
 [submodule "dotfiles/.tmux/plugins/tpm"]
 	path = dotfiles/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "dotfiles/.vim/bundle/tmuxline.vim"]
+	path = dotfiles/.vim/bundle/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
