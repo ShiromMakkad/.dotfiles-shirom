@@ -79,6 +79,8 @@ if [[ "$EUID" -eq 0 ]]; then
     exit
 fi
 
+mkdir ~/.personalrc
+
 PS3='Which OS are you installing on? '
 options=("Ubuntu" "Raspbian" )
 select opt in "${options[@]}"
