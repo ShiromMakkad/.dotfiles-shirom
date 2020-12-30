@@ -110,7 +110,7 @@ echo "Installing plugins..."
 git submodule update --init --recursive --remote
 echo "Plugins installed!"
 
-cp -a dotfiles/. /home/shirom
+cp -a dotfiles/. ~ 
 cp -rn .personalrc ~
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
