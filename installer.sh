@@ -3,17 +3,17 @@
 dir_exec() {
     cd "$(dirname "$0")"
     # Copy over every rc file to .personalrc
-    find "$os_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
-    # Run every setup.sh
-    if [[ install -eq 1 ]]; then 
-        find $os_dir -maxdepth 1 -name 'setup.sh' -exec {} \;
+    find "$exec_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
+    # Run setup.sh
+    if [[ install -eq 1 && -f "$exec_dir/setup.sh" ]]; then 
+        bash -c "$exec_dir/setup.sh"
     fi
 }
 
 tools() {
     if [[ $tools -eq 1 ]]
     then
-        os_dir="${os_dir}/default-tools"
+        exec_dir="${exec_dir}/default-tools"
         dir_exec
     fi
 }
@@ -30,7 +30,7 @@ tools_prompt() {
 }
 
 linux() {
-    os_dir=./os/Linux
+    exec_dir=./os/Linux
     dir_exec 
 }
 
@@ -39,7 +39,7 @@ ubuntu() {
 
     linux
 
-    os_dir=./os/Ubuntu
+    exec_dir=./os/Ubuntu
     dir_exec
 
     tools
@@ -47,12 +47,12 @@ ubuntu() {
 
 raspbian() {
     linux
-    os_dir=./os/Raspbian
+    exec_dir=./os/Raspbian
     dir_exec
 }
 
 wsl() {
-    os_dir=./os/WSL
+    exec_dir=./os/WSL
     dir_exec
 }
 
