@@ -106,13 +106,13 @@ done
 
 cd "$(dirname "$0")"
 
-echo "Installing plugins..."
-git submodule update --init --recursive --remote
-echo "Plugins installed!"
-
+echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
 cp -rn .personalrc ~
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+echo "Installing Vim plugins..."
+vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 
 echo "Done! Run this script again to update. "

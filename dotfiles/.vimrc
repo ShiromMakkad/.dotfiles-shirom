@@ -1,14 +1,73 @@
-execute pathogen#infect()
+let g:polyglot_disabled = ['autoindent', 'sensible']
 
-" Make p no longer overwrite copy
-xmap p <Plug>ReplaceWithRegisterVisual
+call plug#begin('~/.vim/plugged')
+" Essentials
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-sleuth'
+" Very Useful
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'easymotion/vim-easymotion'
+" Useful
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+" Aesthetic
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive' " Using it for git information on the statusline
+" IDE
+Plug 'neoclide/coc.nvim'
+Plug 'vim-syntastic/syntastic'
+Plug 'sheerun/vim-polyglot'
+call plug#end()
 
 " Set leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" Sync clipboard with system
+set clipboard=unnamedplus 
+
+" Turn on line numbers
+set number 
+
+" Always show 7 lines above and below
+set so=7
+
+" Mouse support
+set mouse=a
+
+" Turn off 'o' inserting a comment
+autocmd FileType * setlocal formatoptions-=o
+
+" Center search results
+nmap n nzz
+nmap N Nzz
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" jump to the previous function
+noremap 88 [{
+" jump to the next function
+noremap 99 ]}
+
+" Make p no longer overwrite copy
+xmap p <Plug>ReplaceWithRegisterVisual
+
+" Sets NERDTree open button
+nnoremap <F2> :NERDTreeToggle<CR>
+
+" vim-polyglot
+let g:cpp_simple_highlight = 1
+let g:cpp_member_highlight = 1
+
 " Easymotion bindings
-map s <Plug>(easymotion-s)
+map <Leader>s <Plug>(easymotion-s)
 
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
@@ -20,42 +79,85 @@ map <Leader>w <Plug>(easymotion-bd-w)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
 let g:EasyMotion_smartcase = 1
 
-filetype plugin indent on
-syntax on
-set encoding=utf-8
-set clipboard=unnamedplus 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-nnoremap <F2> :NERDTreeToggle<CR>
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Highlight search resuls
-set hlsearch
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-" Iterate through search results
-set incsearch
+" Navigate to next error https://github.com/vim-syntastic/syntastic/issues/32
+function NavigateError(cmd)
+    try
+        exec a:cmd
+    catch /:E553:/
+        lfirst
+    catch /:E42:/
+        echo "Location list empty"
+    catch /.*/
+        echo v:exception
+    endtry
+endfunction
 
-" Always show 7 lines above and below
-set so=7
+nmap <Leader>e :call NavigateError(":lnext")<CR>
+nmap <Leader>E :call NavigateError(":lprev")<CR>
 
-" Center search results
-nmap n nzz
-nmap N Nzz
+" COC bindings
+let g:coc_disable_startup_warning = 1
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+if has("patch-8.1.1564")
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
 
-" Automatically indent code when going to the next line
-set autoindent
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" jump to the previous function
-noremap 88 [{
-" jump to the next function
-noremap 99 ]}
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" Set relative line numbers
-set number relativenumber 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Mouse support
-set mouse=a
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+endfunction
+
+" End coc.vim  config
+     
+" Aesthetic config
+ 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 " Speeds up relative line numbers set re=1
@@ -97,7 +199,7 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 " Disables the whitespace error counter (didn't really know what it did)
 let g:airline#extensions#whitespace#enabled = 0
 
-" Removes the part of the bar that tells you that you whether you're in a utf-8 or Ascii doc (etc.). I've never needed that information
+" Removes the part of the bar that tells you that you whether you're in a utf-8 or Ascii doc (etc.). 
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 
