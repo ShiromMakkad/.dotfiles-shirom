@@ -106,6 +106,9 @@ done
 
 cd "$(dirname "$0")"
 
+echo "Installing modules..."
+git submodule update --init --recursive --remote
+
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
 cp -rn .personalrc ~
