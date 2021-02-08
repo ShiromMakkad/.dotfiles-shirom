@@ -105,6 +105,13 @@ nmap <Leader>e :call NavigateError(":lnext")<CR>
 nmap <Leader>E :call NavigateError(":lprev")<CR>
 
 " COC bindings
+
+" https://github.com/neoclide/coc.nvim/issues/856
+if $NVM_BIN != ""
+  let g:coc_node_path = '$NVM_BIN/node'
+endif
+
+
 let g:coc_disable_startup_warning = 1
 set hidden
 set nobackup
