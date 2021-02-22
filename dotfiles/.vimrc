@@ -21,7 +21,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive' " Using it for git information on the statusline
 " IDE
 Plug 'neoclide/coc.nvim'
-Plug 'vim-syntastic/syntastic'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
@@ -79,15 +78,6 @@ map <Leader>w <Plug>(easymotion-bd-w)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
 let g:EasyMotion_smartcase = 1
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " Navigate to next error https://github.com/vim-syntastic/syntastic/issues/32
 function NavigateError(cmd)
     try
@@ -105,6 +95,7 @@ nmap <Leader>e :call NavigateError(":lnext")<CR>
 nmap <Leader>E :call NavigateError(":lprev")<CR>
 
 " COC bindings
+let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-vimlsp']
 
 " https://github.com/neoclide/coc.nvim/issues/856
 if $NVM_BIN != ""
