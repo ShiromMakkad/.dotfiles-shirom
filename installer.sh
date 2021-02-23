@@ -107,7 +107,7 @@ done
 cd "$(dirname "$0")"
 
 echo "Installing modules..."
-git submodule update --init --recursive --remote
+sudo git submodule update --init --recursive --remote
 
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
