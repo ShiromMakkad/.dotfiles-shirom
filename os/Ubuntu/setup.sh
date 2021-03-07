@@ -7,4 +7,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 sudo apt-get install tmux
 sudo apt-get install sysstat
 sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get install autojump
 sudo apt-get install vim

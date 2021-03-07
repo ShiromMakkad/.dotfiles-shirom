@@ -77,6 +77,9 @@ plugins=(
    git
    zsh-syntax-highlighting
    zsh-autosuggestions
+   k
+   enhancd
+   autojump
 )
 
 ZSH_DISABLE_COMPFIX=true
@@ -110,10 +113,13 @@ vim -E -c sfgdgsdf -c q
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# For tmux-yank
+bindkey -e
+
+# For autojump
+. /usr/share/autojump/autojump.sh
+
 # Source all of my personal rc files
 for file in ~/.personalrc/*; do
     source "$file"
 done
-
-# For tmux-yank
-bindkey -e
