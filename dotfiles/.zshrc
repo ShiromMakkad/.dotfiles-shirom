@@ -79,8 +79,9 @@ plugins=(
    zsh-autosuggestions
    k
    enhancd
-   autojump
 )
+
+ENHANCD_DISABLE_DOT=1
 
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
@@ -115,9 +116,6 @@ vim -E -c sfgdgsdf -c q
 
 # For tmux-yank
 bindkey -e
-
-# For autojump
-. /usr/share/autojump/autojump.sh
 
 # Source all of my personal rc files
 for file in ~/.personalrc/*; do

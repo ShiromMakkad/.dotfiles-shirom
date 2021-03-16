@@ -108,7 +108,7 @@ install_nvm
 install_wsl
 
 echo "Installing modules..."
-sudo git submodule update --init --recursive --remote
+git submodule update --init --recursive --remote
 
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
