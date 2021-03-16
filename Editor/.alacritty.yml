@@ -2,12 +2,16 @@ window:
   dimensions:
     columns: 100
     lines: 35
+  title: Terminal
 font:
   normal:
     family: Inconsolata NF
   size: 14.0
 shell:
   program: /bin/zsh
+cursor:
+  style:
+    shape: Beam 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
 colors:
