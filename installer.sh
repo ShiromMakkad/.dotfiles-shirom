@@ -1,7 +1,8 @@
 #!/bin/bash
 
-dir_exec() {
-    cd "$(dirname "$0")"
+cd "$(dirname "$0")"
+
+os_exec() {
     # Copy over every rc file to .personalrc
     find "$exec_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
     # Run setup.sh
@@ -10,50 +11,50 @@ dir_exec() {
     fi
 }
 
-tools() {
-    if [[ $tools -eq 1 ]]
+install_nvm() {
+    if [[ $nvm -eq 1 ]]
     then
-        exec_dir="${exec_dir}/default-tools"
-        dir_exec
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+        cp .personalrc/examples/nvmrc ~/.personalrc
+        zsh -c "source ~/.personalrc/nvmrc && nvm install node"
     fi
 }
 
-tools_prompt() {
-    if [[ install -eq 1 ]]; then 
-        read -p "Would you like to install tools? (ex. NVM, Anaconda, etc.) (y/n) " -n 1 -r
-        echo
-        if [[ $REPLY =~ ^[Yy]$ ]]
-        then
-            tools=1
-        fi
+nvm_prompt() {
+    read -p "Would you like to install NVM (Node version manager)? These dotfiles need Node installed, but you don't need to install NVM if node is already installed (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        nvm=1
     fi
 }
 
 linux() {
+    nvm_prompt
+
     exec_dir=./os/Linux
-    dir_exec 
+    os_exec 
 }
 
 ubuntu() {
-    tools_prompt
-
     linux
 
     exec_dir=./os/Ubuntu
-    dir_exec
-
-    tools
+    os_exec
 }
 
 raspbian() {
     linux
+
     exec_dir=./os/Raspbian
-    dir_exec
+    os_exec
 }
 
-wsl() {
-    exec_dir=./os/WSL
-    dir_exec
+install_wsl() {
+    if [[ wsl -eq 1 ]]; then
+        exec_dir=./os/WSL
+        os_exec
+    fi
 }
 
 wsl_prompt() {
@@ -79,7 +80,7 @@ if [[ "$EUID" -eq 0 ]]; then
     exit
 fi
 
-mkdir ~/.personalrc
+mkdir -p ~/.personalrc
 
 PS3='Which OS are you installing on? '
 options=("Ubuntu" "Raspbian" )
@@ -90,9 +91,6 @@ do
             installer_prompt
             wsl_prompt
             ubuntu
-            if [[ wsl -eq 1 ]]; then
-                wsl
-            fi
             break
             ;;
         "Raspbian")
@@ -104,15 +102,18 @@ do
     esac
 done
 
-cd "$(dirname "$0")"
+cp -rn .personalrc ~
+
+install_nvm
+install_wsl
 
 echo "Installing modules..."
 sudo git submodule update --init --recursive --remote
 
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
-cp -rn .personalrc ~
 
+echo "Installing tmux plugins..."
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 echo "Installing Vim plugins..."
