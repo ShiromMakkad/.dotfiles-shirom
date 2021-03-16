@@ -1,2 +1,2 @@
 export PATH=~/.local/bin:$PATH
-alias la='k'
+alias la='ls -a'
