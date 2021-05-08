@@ -1,5 +1,4 @@
 let g:polyglot_disabled = ['autoindent', 'sensible']
-
 call plug#begin('~/.vim/plugged')
 " Essentials
 Plug 'tpope/vim-sensible'
@@ -40,8 +39,8 @@ set so=7
 " Mouse support
 set mouse=a
 
-" Turn off 'o' inserting a comment
-autocmd FileType * setlocal formatoptions-=o
+" Turn off 'o' and enter inserting a comment
+autocmd FileType * setlocal formatoptions-=ro
 
 " Center search results
 nmap n nzz
@@ -50,10 +49,14 @@ nmap N Nzz
 " Give more space for displaying messages.
 set cmdheight=2
 
-" jump to the previous function
+" Jump to the previous function
 noremap 88 [{
-" jump to the next function
+" Jump to the next function
 noremap 99 ]}
+
+" Buffer keymaps
+nnoremap <Leader>b :bnext<CR>
+nnoremap <Leader>B :bprevious<CR>
 
 " Make p no longer overwrite copy
 xmap p <Plug>ReplaceWithRegisterVisual
@@ -91,17 +94,16 @@ function NavigateError(cmd)
     endtry
 endfunction
 
-nmap <Leader>e :call NavigateError(":lnext")<CR>
-nmap <Leader>E :call NavigateError(":lprev")<CR>
+nmap <Leader>e <Plug>(coc-diagnostic-prev)
+nmap <Leader>E <Plug>(coc-diagnostic-next)
 
 " COC bindings
-let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-vimlsp']
+let g:coc_global_extensions = ['coc-json', 'coc-vimlsp']
 
 " https://github.com/neoclide/coc.nvim/issues/856
 if $NVM_BIN != ""
   let g:coc_node_path = '$NVM_BIN/node'
 endif
-
 
 let g:coc_disable_startup_warning = 1
 set hidden
@@ -131,16 +133,16 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Leader>r <Plug>(coc-rename)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gy <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <Leader>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -152,7 +154,19 @@ function! s:show_documentation()
     endif
 endfunction
 
-" End coc.vim  config
+" Formatting selected code.
+xmap <Leader>f  <Plug>(coc-format-selected)
+nmap <Leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" End coc.vim config
      
 " Aesthetic config
  
