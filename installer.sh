@@ -11,27 +11,7 @@ os_exec() {
     fi
 }
 
-install_nvm() {
-    if [[ $nvm -eq 1 ]]
-    then
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-        cp .personalrc/examples/nvmrc ~/.personalrc
-        zsh -c "source ~/.personalrc/nvmrc && nvm install node"
-    fi
-}
-
-nvm_prompt() {
-    read -p "Would you like to install NVM (Node version manager)? These dotfiles need Node installed, but you don't need to install NVM if node is already installed (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        nvm=1
-    fi
-}
-
 linux() {
-    nvm_prompt
-
     exec_dir=./os/Linux
     os_exec 
 }
@@ -104,7 +84,6 @@ done
 
 cp -rn .personalrc ~
 
-install_nvm
 install_wsl
 
 echo "Installing modules..."
