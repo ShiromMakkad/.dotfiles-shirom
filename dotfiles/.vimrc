@@ -19,7 +19,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive' " Using it for git information on the statusline
 " IDE
-Plug 'neoclide/coc.nvim'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
@@ -97,77 +96,6 @@ endfunction
 nmap <Leader>e <Plug>(coc-diagnostic-prev)
 nmap <Leader>E <Plug>(coc-diagnostic-next)
 
-" COC bindings
-let g:coc_global_extensions = ['coc-json', 'coc-vimlsp']
-
-" https://github.com/neoclide/coc.nvim/issues/856
-if $NVM_BIN != ""
-  let g:coc_node_path = '$NVM_BIN/node'
-endif
-
-let g:coc_disable_startup_warning = 1
-set hidden
-set nobackup
-set nowritebackup
-set updatetime=300
-set shortmess+=c
-if has("patch-8.1.1564")
-    set signcolumn=number
-else
-    set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <Leader>r <Plug>(coc-rename)
-
-" GoTo code navigation.
-nmap <silent> <Leader>gd <Plug>(coc-definition)
-nmap <silent> <Leader>gy <Plug>(coc-type-definition)
-nmap <silent> <Leader>gi <Plug>(coc-implementation)
-nmap <silent> <Leader>gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> <Leader>d :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-        call CocActionAsync('doHover')
-    else
-        execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-endfunction
-
-" Formatting selected code.
-xmap <Leader>f  <Plug>(coc-format-selected)
-nmap <Leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" End coc.vim config
-     
 " Aesthetic config
  
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
