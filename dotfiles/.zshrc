@@ -103,9 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# For lS_Colors
-eval $( dircolors -b $HOME/.dircolors )
-
 # For Tmux Colors (since they're set through a vim plugin)
 vim -E -c sfgdgsdf -c q
 

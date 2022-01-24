@@ -23,10 +23,8 @@ ubuntu() {
     os_exec
 }
 
-raspbian() {
-    linux
-
-    exec_dir=./os/Raspbian
+mac() {
+    exec_dir=./os/Mac
     os_exec
 }
 
@@ -63,7 +61,7 @@ fi
 mkdir -p ~/.personalrc
 
 PS3='Which OS are you installing on? '
-options=("Ubuntu" "Raspbian" )
+options=("Ubuntu" "Mac")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -73,9 +71,9 @@ do
             ubuntu
             break
             ;;
-        "Raspbian")
+        "Mac")
             installer_prompt
-            raspbian
+            mac 
             break
             ;;
         *) echo "$REPLY is an invalid option. Try again";;
