@@ -23,6 +23,13 @@ ubuntu() {
     os_exec
 }
 
+fedora() {
+    linux
+
+    exec_dir=./os/Fedora
+    os_exec
+}
+
 mac() {
     exec_dir=./os/Mac
     os_exec
@@ -61,7 +68,7 @@ fi
 mkdir -p ~/.personalrc
 
 PS3='Which OS are you installing on? '
-options=("Ubuntu" "Mac")
+options=("Ubuntu" "Fedora" "Mac")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -69,6 +76,12 @@ do
             installer_prompt
             wsl_prompt
             ubuntu
+            break
+            ;;
+        "Fedora")
+            installer_prompt
+            wsl_prompt
+            fedora 
             break
             ;;
         "Mac")
