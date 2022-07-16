@@ -15,5 +15,6 @@ else
 	brew install tmux
 	brew install autojump
 fi
+brew install neovim
 
 $(brew --prefix)/opt/fzf/install

@@ -6,4 +6,4 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 sudo dnf install tmux
 sudo dnf install sysstat
 sudo dnf install autojump-zsh
-sudo dnf install vim-enhanced
+sudo dnf install neovim
