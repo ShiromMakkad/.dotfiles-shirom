@@ -97,14 +97,14 @@ let g:EasyMotion_smartcase = 1
 " Speeds up relative line numbers set re=1
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if !has("ide")
-    colorscheme base16-monokai
+    colorscheme base16-tomorrow-night-eighties
 
     " Make vim look right in tmux
     set background=dark
 
     " Airline config
     let g:airline#extensions#tabline#enabled = 1 " Turns on the tabline up top
-    let g:airline_theme='base16_monokai'
+    let g:airline_theme='base16_tomorrow_night_eighties'
     " Adds the angled seperators
     let g:airline_left_sep = ''
     let g:airline_left_alt_sep = ''
