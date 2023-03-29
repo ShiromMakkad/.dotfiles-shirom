@@ -31,7 +31,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{f9ceaf27-504c-58d7-927c-d1d6a7ac7d3c}",
+    "defaultProfile": "{d7b20cea-47a9-518c-95a4-c8bd91e2e1c6}",
     "profiles": 
     {
         "defaults": 
@@ -42,16 +42,16 @@
             "font": 
             {
                 "face": "Inconsolata NF",
-                "size": 14
+                "size": 14.0
             }
         },
         "list": 
         [
 			{
+                "guid": "{d7b20cea-47a9-518c-95a4-c8bd91e2e1c6}",
 				"colorScheme": "Tomorrow Night",
-                "guid": "{f9ceaf27-504c-58d7-927c-d1d6a7ac7d3c}",
                 "hidden": false,
-                "name": "Ubuntu 22.04.1 LTS",
+                "name": "Ubuntu 22.04.2 LTS",
                 "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
             },
             {
@@ -79,7 +79,7 @@
                 "hidden": true,
                 "name": "Ubuntu-22.04",
                 "source": "Windows.Terminal.Wsl"
-            }
+            },
         ]
     },
     "schemes": 
@@ -406,5 +406,6 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ]
+    ],
+    "themes": []
 }
