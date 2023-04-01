@@ -66,7 +66,7 @@ plugins=(
    enhancd
 )
 
-ENHANCD_DISABLE_DOT=1
+ENHANCD_ENABLE_DOUBLE_DOT=0
 
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
