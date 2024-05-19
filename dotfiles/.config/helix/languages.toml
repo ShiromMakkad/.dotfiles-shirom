@@ -1,0 +1,6 @@
+[[language]]
+name = "rust"
+auto-format = false
+
+[language-server.rust-analyzer]
+command = "/Users/smakkad/.config/helix/rust-analyzer-aarch64-apple-darwin"

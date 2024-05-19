@@ -1,0 +1,8 @@
+theme = "base16-tomorrow-night-eighties-shirom"
+
+[editor]
+line-number = "relative"
+true-color = true
+
+[editor.lsp]
+display-inlay-hints = true
