@@ -18,3 +18,10 @@ fi
 brew install neovim
 
 $(brew --prefix)/opt/fzf/install
+
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install tinty
+
+cp ./.personalrc/examples/nnnrc ~/.personalrc
+cp ./.personalrc/examples/fzfrc-base16 ~/.personalrc

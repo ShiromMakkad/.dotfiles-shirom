@@ -1,7 +1,1 @@
-alias ll='k'
-alias lla='k -a'
-
-# For lS_Colors
-eval $( dircolors -b $HOME/.dircolors )
-
 . /usr/share/autojump/autojump.sh
