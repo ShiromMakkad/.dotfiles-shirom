@@ -62,8 +62,11 @@ plugins=(
    git
    zsh-syntax-highlighting
    zsh-autosuggestions
-   k
    enhancd
+   zsh-history-substring-search
+   zsh-vi-mode
+   docker
+   rust
 )
 
 ENHANCD_ENABLE_DOUBLE_DOT=0
