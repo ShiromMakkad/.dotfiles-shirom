@@ -109,4 +109,7 @@ echo "Installing tmux plugins..."
 echo "Installing Vim plugins..."
 vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 
+echo "Applying Tinty"
+tinty apply base16-tomorrow-night-eighties
+
 echo "Done! Run this script again to update. "

@@ -7,3 +7,9 @@ sudo yum install tmux
 sudo yum install sysstat
 sudo yum install autojump-zsh
 sudo yum install neovim
+
+
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install tinty
