@@ -25,7 +25,7 @@
 "string"  = "base0B"
 "type" = "base0A"
 "variable" = "base08"
-"variable.other.member" = "base0B"
+"variable.other.member" = "base0E"
 "warning" = "base09"
 
 "markup.bold" = { fg = "base0A", modifiers = ["bold"] }
