@@ -6,3 +6,6 @@ true-color = true
 
 [editor.lsp]
 display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
