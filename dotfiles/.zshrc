@@ -5,11 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Source all of my personal rc files
-for file in ~/.personalrc/*; do
-    source "$file"
-done
-
 # Start tmux
 if command -v tmux &> /dev/null && [ -n "$PS1"  ] && [[ ! "$TERM" =~ screen  ]] && [[ ! "$TERM" =~ tmux  ]] && [ -z "$TMUX"  ]; then
 	exec tmux
@@ -79,10 +74,19 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+function user_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# For tmux-yank
-bindkey -e
+	# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+	[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+	
+	# For tmux-yank
+	bindkey -e
+	
+	# Source all of my personal rc files
+	for file in ~/.personalrc/*; do
+	    source "$file"
+	done
+}
+# Solves zsh-vi-mode incompatibility: https://github.com/jeffreytse/zsh-vi-mode/issues/4
+zvm_after_init_commands+=(user_init)
