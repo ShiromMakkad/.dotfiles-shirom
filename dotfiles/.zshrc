@@ -35,10 +35,16 @@ zinit light romkatv/powerlevel10k
 zinit ice wait lucid
 zinit light ShiromMakkad/rust-zsh-completions
 
+zinit snippet OMZ::lib/clipboard.zsh
+# Broken for now. Want to get this as part of fzf-tab: https://github.com/Aloxaf/fzf-tab/issues/341
+# zinit light marlonrichert/zsh-autocomplete
+zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
-zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+# Enable tmux popup for fzf-tab
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # Solves zsh-vi-mode incompatibility: https://github.com/jeffreytse/zsh-vi-mode/issues/4
 function zvm_after_init() {
@@ -51,8 +57,12 @@ function zvm_after_init() {
 # For tmux-yank
 bindkey -e
 
+eval "$(zoxide init --cmd cd zsh)"
+
 # Source all of my personal rc files
 for file in ~/.personalrc/*; do
     source "$file"
 done
 
+alias cpy=clipcopy
+alias pst=clippaste
