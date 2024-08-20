@@ -1,9 +1,0 @@
-source "$(dirname $(readlink -f $0))/lazy_loader.sh"
-
-# Lazy load rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-rbenv_init() {
-    eval "$(rbenv init -)"
-}
-
-lazy_load rbenv_init rbenv bundle bundler gem irb rake ruby
