@@ -42,6 +42,7 @@ zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit load zpm-zsh/ls
 
 # Enable tmux popup for fzf-tab
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup

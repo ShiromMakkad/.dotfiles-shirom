@@ -1,9 +1,6 @@
 export PATH=~/.local/bin:$PATH
 alias la='ls -a'
 
-# For lS_Colors
-eval $( dircolors -b $HOME/.dircolors )
-
 alias vim=nvim
 alias vimdiff='nvim -d'
 export EDITOR=nvim
