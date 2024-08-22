@@ -31,18 +31,23 @@ fi
 zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
 
-# Lazy load plugin
-zinit ice wait lucid
-zinit light ShiromMakkad/rust-zsh-completions
-
-zinit snippet OMZ::lib/clipboard.zsh
 # Broken for now. Want to get this as part of fzf-tab: https://github.com/Aloxaf/fzf-tab/issues/341
 # zinit light marlonrichert/zsh-autocomplete
+
+zinit snippet OMZ::lib/clipboard.zsh
 zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit load zpm-zsh/ls
+zinit light zpm-zsh/ls
+
+# Completions
+zinit light ShiromMakkad/rust-zsh-completions
+zinit light zsh-users/zsh-completions
+
+# Use `zinit times` to benchmark plugin loads
+# Add the following line above a `zinit` line to lazy load plugin
+# zinit ice wait lucid
 
 # Enable tmux popup for fzf-tab
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
