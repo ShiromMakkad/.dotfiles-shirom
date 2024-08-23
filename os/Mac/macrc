@@ -1,7 +1,1 @@
 eval $(/opt/homebrew/bin/brew shellenv)
-
-alias la='ls -a'
-
-alias vim="nvim"
-alias vi="nvim"
-alias oldvim="vim"

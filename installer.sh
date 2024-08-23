@@ -11,21 +11,12 @@ os_exec() {
     fi
 }
 
-linux() {
-    exec_dir=./os/Linux
-    os_exec 
-}
-
 ubuntu() {
-    linux
-
     exec_dir=./os/Ubuntu
     os_exec
 }
 
 fedora() {
-    linux
-
     exec_dir=./os/Fedora
     os_exec
 }
@@ -43,18 +34,16 @@ install_wsl() {
 }
 
 wsl_prompt() {
-    read -p "Is this a WSL installation? (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
+    read -r -p "Is this a WSL installation? [y/N]" response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
     then
         wsl=1
     fi
 }
 
 installer_prompt() {
-    read -p "Would you like to install programs? (rather than just copy the dotfiles and plugins) (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
+    read -r -p "Would you like to install programs? (rather than just copy the dotfiles and plugins) [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
     then
         install=1
     fi
@@ -96,6 +85,19 @@ done
 cp -rn .personalrc ~
 
 install_wsl
+
+# Generic installation
+if [[ install -eq 1 ]]; then 
+    # Install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+
+    # Install Rust
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    cargo install zoxide --locked
+    cargo install lsd
+    cargo install tinty
+fi
 
 echo "Installing modules..."
 git submodule update --init --recursive --remote
