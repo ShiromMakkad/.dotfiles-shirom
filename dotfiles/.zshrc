@@ -54,17 +54,6 @@ zinit light zshzoo/cd-ls
 # Enable tmux popup for fzf-tab
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-# For ls colors which are needed by fzf-tab
-zinit snippet https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/lscolors.sh
-if whence dircolors >/dev/null; then
-  eval "$(dircolors -b)"
-  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-  alias ls='ls --color'
-else
-  export CLICOLOR=1
-  zstyle ':completion:*:default' list-colors ''
-fi
-
 # Solves zsh-vi-mode incompatibility: https://github.com/jeffreytse/zsh-vi-mode/issues/4
 function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -86,6 +75,7 @@ done
 alias cpy=clipcopy
 alias pst=clippaste
 
+alias ls='lsd'
 alias la='ls -a'
 alias ll='ls -al'
 
