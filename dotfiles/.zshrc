@@ -31,6 +31,12 @@ fi
 zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
 
+# Completions
+zinit light ShiromMakkad/rust-zsh-completions
+zinit light zsh-users/zsh-completions
+
+autoload -U compinit; compinit
+
 # Broken for now. Want to get this as part of fzf-tab: https://github.com/Aloxaf/fzf-tab/issues/341
 # zinit light marlonrichert/zsh-autocomplete
 
@@ -39,11 +45,7 @@ zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light zpm-zsh/ls
-
-# Completions
-zinit light ShiromMakkad/rust-zsh-completions
-zinit light zsh-users/zsh-completions
+zinit light zshzoo/cd-ls
 
 # Use `zinit times` to benchmark plugin loads
 # Add the following line above a `zinit` line to lazy load plugin
@@ -51,6 +53,17 @@ zinit light zsh-users/zsh-completions
 
 # Enable tmux popup for fzf-tab
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
+# For ls colors which are needed by fzf-tab
+zinit snippet https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/lscolors.sh
+if whence dircolors >/dev/null; then
+  eval "$(dircolors -b)"
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  alias ls='ls --color'
+else
+  export CLICOLOR=1
+  zstyle ':completion:*:default' list-colors ''
+fi
 
 # Solves zsh-vi-mode incompatibility: https://github.com/jeffreytse/zsh-vi-mode/issues/4
 function zvm_after_init() {
@@ -72,3 +85,9 @@ done
 
 alias cpy=clipcopy
 alias pst=clippaste
+
+alias la='ls -a'
+alias ll='ls -al'
+
+alias vim='nvim'
+alias vimdiff='nvim -d'
