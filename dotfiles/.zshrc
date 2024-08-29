@@ -28,6 +28,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Set up history
+HISTFILE=~/.zsh_history
+HISTSIZE=12000
+SAVEHIST=10000
+setopt HIST_EXPIRE_DUPS_FIRST  # Expire dup event first when trimming hist
+setopt HIST_IGNORE_DUPS        # Do not record consecutive dup events
+setopt HIST_IGNORE_SPACE       # Do not record event starting with a space
+setopt appendhistory
+
 zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
 
