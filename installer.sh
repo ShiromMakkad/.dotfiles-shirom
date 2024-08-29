@@ -97,6 +97,7 @@ if [[ install -eq 1 ]]; then
     PATH=$PATH:~/.cargo/bin
     cargo install zoxide --locked
     cargo install lsd
+    cargo install zellij --locked
     cargo install tinty
 fi
 
