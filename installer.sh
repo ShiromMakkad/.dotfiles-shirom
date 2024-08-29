@@ -94,6 +94,7 @@ if [[ install -eq 1 ]]; then
 
     # Install Rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    PATH=$PATH:~/.cargo/bin
     cargo install zoxide --locked
     cargo install lsd
     cargo install tinty
