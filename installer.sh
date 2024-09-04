@@ -74,6 +74,7 @@ do
             break
             ;;
         "Mac")
+            echo "Note: Installer is only supported for M-series chips."
             installer_prompt
             mac 
             break
