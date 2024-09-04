@@ -33,7 +33,7 @@ foreground = "0xcccccc"
 shape = "Block"
 
 [font]
-size = 14.0
+size = 18.0
 
 [font.normal]
 family = "Inconsolata NF"
@@ -47,6 +47,7 @@ program = "/bin/zsh"
 
 [window]
 title = "Terminal"
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 100
