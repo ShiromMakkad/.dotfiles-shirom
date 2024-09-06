@@ -76,6 +76,8 @@ bindkey -e
 
 eval "$(zoxide init --cmd cd zsh)"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # Source all of my personal rc files
 for file in ~/.personalrc/*; do
     source "$file"
