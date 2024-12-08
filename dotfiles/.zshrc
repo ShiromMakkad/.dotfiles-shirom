@@ -77,6 +77,7 @@ bindkey -e
 eval "$(zoxide init --cmd cd zsh)"
 
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR=hx
 
 # Source all of my personal rc files
 for file in ~/.personalrc/*; do
@@ -96,3 +97,4 @@ alias vimdiff='nvim -d'
 alias gs="git status"
 
 alias zet="zellij action new-tab -l"
+alias zl="zellij"
