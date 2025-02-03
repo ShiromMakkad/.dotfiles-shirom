@@ -100,6 +100,7 @@ if [[ install -eq 1 ]]; then
     cargo install lsd
     cargo install zellij --locked
     cargo install tinty
+    cargo install git-delta
 fi
 
 echo "Installing modules..."
