@@ -98,7 +98,8 @@ if [[ install -eq 1 ]]; then
     PATH=$PATH:~/.cargo/bin
     cargo install zoxide --locked
     cargo install lsd
-    cargo install zellij --locked
+    # Have to stay on old version due to https://github.com/helix-editor/helix/issues/6551
+    cargo install zellij --version 0.40.1 --locked
     cargo install tinty
     cargo install git-delta
 fi
