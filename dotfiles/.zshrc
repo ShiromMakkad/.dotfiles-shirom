@@ -60,9 +60,6 @@ zinit light zshzoo/cd-ls
 # Add the following line above a `zinit` line to lazy load plugin
 # zinit ice wait lucid
 
-# Enable tmux popup for fzf-tab
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
 # Solves zsh-vi-mode incompatibility: https://github.com/jeffreytse/zsh-vi-mode/issues/4
 function zvm_after_init() {
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -70,9 +67,6 @@ function zvm_after_init() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-# For tmux-yank
-bindkey -e
 
 eval "$(zoxide init --cmd cd zsh)"
 

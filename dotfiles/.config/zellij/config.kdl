@@ -1,1 +1,14 @@
 pane_frames false
+
+keybinds {
+	normal {
+		unbind "Ctrl o";
+		bind "Ctrl y" { SwitchToMode "session"; }
+		unbind "Ctrl t";
+		bind "Ctrl k" { SwitchToMode "tab"; }
+	}
+	// Default keybinds here: https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
+	shared_except "locked" {
+		bind "Alt n" { NewPane "Right"; }
+    }
+}

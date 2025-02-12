@@ -2,7 +2,6 @@
 
 brew update
 
-arch -arm64 brew install tmux
 arch -arm64 brew install neovim
 arch -arm64 brew install helix
 arch -arm64 brew install nnn

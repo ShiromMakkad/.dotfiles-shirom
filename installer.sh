@@ -111,9 +111,6 @@ git submodule update --init --recursive --remote
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~ 
 
-echo "Installing tmux plugins..."
-~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
 echo "Installing Vim plugins..."
 vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 

@@ -28,7 +28,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive' " Using it for git information on the statusline
 " IDE
@@ -123,14 +122,4 @@ if !has("ide")
     " Removes the part of the bar that tells you that you whether you're in a utf-8 or Ascii doc (etc.). 
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
-
-    " Tmuxline config
-    let g:tmuxline_preset = {
-                \'a'    : '\uf31b #H',
-                \'win'  : '#I #W',
-                \'cwin' : '#I #W',
-                \'x' : ["\uf9c4 RAM:#(free -m -h | grep Mem | awk '{ print $4 }')", "\ue266 CPU:#(mpstat 2 1 | awk '$12 ~ /[0-9.]+/ { print 100 - $12 }')%", '\uf578 #(cat /sys/class/power_supply/battery/capacity)%'],
-                \'y'    : '\uf64f %R',
-                \'z'    : ['\uf133 %a #(date "+%m/%d/%y")'], 
-                \'options' : {'status-justify' : 'left'}}
 endif
