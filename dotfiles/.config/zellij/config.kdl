@@ -3,7 +3,7 @@ pane_frames false
 keybinds {
 	normal {
 		unbind "Ctrl o";
-		bind "Ctrl y" { SwitchToMode "session"; }
+		bind "Ctrl l" { SwitchToMode "session"; }
 		unbind "Ctrl t";
 		bind "Ctrl k" { SwitchToMode "tab"; }
 	}
