@@ -42,6 +42,11 @@ family = "Inconsolata NF"
 action = "ToggleFullscreen"
 key = "F11"
 
+[[keyboard.bindings]]
+key = "["
+mods = "Control"
+chars = "\u001b"
+
 [shell]
 program = "/bin/zsh"
 
@@ -52,3 +57,4 @@ option_as_alt = "Both"
 [window.dimensions]
 columns = 100
 lines = 35
+

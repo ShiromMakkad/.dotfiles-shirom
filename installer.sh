@@ -101,8 +101,7 @@ if [[ install -eq 1 ]]; then
     cargo install ripgrep
     cargo install fd-find
     cargo install --locked yazi-fm yazi-cli
-    # Have to stay on old version due to https://github.com/helix-editor/helix/issues/6551
-    cargo install zellij --version 0.40.1 --locked
+    cargo install zellij --locked
     cargo install tinty
     cargo install git-delta
 fi
