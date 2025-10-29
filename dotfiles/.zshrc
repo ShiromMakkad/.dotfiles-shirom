@@ -44,6 +44,7 @@ zinit light romkatv/powerlevel10k
 zinit light ShiromMakkad/rust-zsh-completions
 zinit light zsh-users/zsh-completions
 
+autoload bashcompinit && bashcompinit
 autoload -U compinit; compinit
 
 # Broken for now. Want to get this as part of fzf-tab: https://github.com/Aloxaf/fzf-tab/issues/341
@@ -82,12 +83,10 @@ function y() {
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=hx
 
-# Source all of my personal rc files
-for file in ~/.personalrc/*; do
-    source "$file"
-done
-
-alias cpy=clipcopy
+cpy() {
+  local copybuf=$(cat | base64 | tr -d '\n')
+  printf "\033]52;c;%s\007" "$copybuf"
+}
 alias pst=clippaste
 
 alias ls='lsd'
@@ -101,3 +100,8 @@ alias gs="git status"
 
 alias zet="zellij action new-tab -l"
 alias zl="zellij"
+
+# Source all of my personal rc files
+for file in ~/.personalrc/*; do
+    source "$file"
+done
