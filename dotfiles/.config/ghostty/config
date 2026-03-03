@@ -1,0 +1,36 @@
+# --- Font Settings ---
+font-family = "Inconsolata NF"
+font-size = 16
+
+# --- Window & Shell ---
+command = /bin/zsh
+window-width = 100
+window-height = 35
+
+# --- Cursor ---
+cursor-style = block
+cursor-color = #cccccc
+
+# --- Colors ---
+background = #2d2d2d
+foreground = #cccccc
+palette = 0=#2d2d2d
+palette = 1=#f2777a
+palette = 2=#99cc99
+palette = 3=#ffcc66
+palette = 4=#6699cc
+palette = 5=#cc99cc
+palette = 6=#66cccc
+palette = 7=#cccccc
+palette = 8=#999999
+palette = 9=#f99157
+palette = 10=#393939
+palette = 11=#515151
+palette = 12=#b4b7b4
+palette = 13=#e0e0e0
+palette = 14=#a3685a
+palette = 15=#ffffff
+
+# --- Keybindings ---
+keybind = f11=toggle_fullscreen
+keybind = ctrl+[=text:\x1b
