@@ -104,6 +104,7 @@ if [[ install -eq 1 ]]; then
     cargo install zellij --locked
     cargo install tinty
     cargo install git-delta
+    cargo install --force yazi-build
 fi
 
 echo "Installing modules..."
