@@ -1,4 +1,5 @@
 pane_frames false
+show_startup_tips false
 
 keybinds {
 	normal {
@@ -7,8 +8,14 @@ keybinds {
 		unbind "Ctrl t";
 		bind "Ctrl k" { SwitchToMode "tab"; }
 	}
+	pane {
+		bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0; }
+		bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
+		unbind "c";
+	}
 	// Default keybinds here: https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 	shared_except "locked" {
 		bind "Alt n" { NewPane "Right"; }
+		bind "Alt s" { NewPane "stacked"; }
     }
 }
