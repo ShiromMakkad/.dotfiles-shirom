@@ -3,4 +3,3 @@
 brew update
 
 arch -arm64 brew install neovim
-arch -arm64 brew install helix

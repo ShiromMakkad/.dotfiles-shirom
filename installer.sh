@@ -26,6 +26,21 @@ mac() {
     os_exec
 }
 
+install_helix() {
+    mkdir -p ~/Downloads
+    if [ -d ~/Downloads/helix ]; then
+        git -C ~/Downloads/helix pull
+    else
+        git clone https://github.com/helix-editor/helix ~/Downloads/helix
+    fi
+    cargo install \
+        --profile opt \
+        --config 'build.rustflags="-C target-cpu=native"' \
+        --path ~/Downloads/helix/helix-term \
+        --locked
+    ln -sf ~/Downloads/helix/runtime ~/.config/helix/runtime
+}
+
 install_wsl() {
     if [[ wsl -eq 1 ]]; then
         exec_dir=./os/WSL
@@ -85,6 +100,12 @@ done
 
 cp -rn .personalrc ~
 
+echo "Copying dotfiles..."
+cp -a dotfiles/. ~ 
+
+echo "Installing Vim plugins..."
+vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
+
 install_wsl
 
 # Generic installation
@@ -105,16 +126,9 @@ if [[ install -eq 1 ]]; then
     cargo install tinty
     cargo install git-delta
     cargo install --force yazi-build
+
+    install_helix
 fi
-
-echo "Installing modules..."
-git submodule update --init --recursive --remote
-
-echo "Copying dotfiles..."
-cp -a dotfiles/. ~ 
-
-echo "Installing Vim plugins..."
-vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 
 echo "Applying Tinty"
 tinty install
