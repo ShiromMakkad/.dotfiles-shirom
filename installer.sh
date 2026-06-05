@@ -117,15 +117,15 @@ if [[ install -eq 1 ]]; then
     # Install Rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     PATH=$PATH:~/.cargo/bin
-    cargo install zoxide --locked
-    cargo install lsd
-    cargo install ripgrep
-    cargo install fd-find
-    cargo install --locked yazi-fm yazi-cli
-    cargo install zellij --locked
     cargo install tinty
-    cargo install git-delta
-    cargo install --force yazi-build
+    cargo install cargo-binstall --locked
+    cargo binstall zoxide --locked
+    cargo binstall lsd
+    cargo binstall ripgrep
+    cargo binstall fd-find
+    cargo binstall --locked yazi-fm yazi-cli
+    cargo binstall zellij --locked
+    cargo binstall git-delta
 
     install_helix
 fi
