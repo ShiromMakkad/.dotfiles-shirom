@@ -97,6 +97,7 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 
 alias gs="git status"
+alias gd="git diff"
 
 alias zet="zellij action new-tab -l"
 alias zl="zellij"
