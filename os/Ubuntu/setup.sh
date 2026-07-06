@@ -1,6 +1,6 @@
 sudo apt-get update
-sudo apt-get install curl
-sudo apt-get install zsh
-sudo apt-get install sysstat
-sudo apt-get install neovim
-sudo apt install build-essential
+sudo apt-get install -y curl
+sudo apt-get install -y zsh
+sudo apt-get install -y sysstat
+sudo apt-get install -y neovim
+sudo apt-get install -y build-essential

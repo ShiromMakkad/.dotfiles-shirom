@@ -2,30 +2,54 @@
 
 cd "$(dirname "$0")"
 
-os_exec() {
-    # Copy over every rc file to .personalrc
-    find "$exec_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
-    # Run setup.sh
-    if [[ install -eq 1 && -f "$exec_dir/setup.sh" ]]; then 
-        bash -c "$exec_dir/setup.sh"
+install=0
+wsl=0
+os=""
+
+parse_flags() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --os)      os=$(echo "$2" | tr '[:upper:]' '[:lower:]') || exit 1; shift 2 ;;
+            --install) install=1; shift ;;
+            --wsl)     wsl=1; shift ;;
+            -h|--help)
+                echo "Usage: installer.sh --os ubuntu|fedora|mac [--install] [--wsl]"
+                echo "  --os <os>    Target OS (ubuntu, fedora, mac)"
+                echo "  --install    Install programs (not just dotfiles)"
+                echo "  --wsl        WSL installation"
+                exit 0
+                ;;
+            *)  echo "Unknown option: $1"; exit 1 ;;
+        esac
+    done
+
+    if [[ -z "$os" ]]; then
+        echo "Error: --os is required."
+        exit 1
     fi
 }
 
-ubuntu() {
-    exec_dir=./os/Ubuntu
-    os_exec
+validate_inputs() {
+    if [[ "$EUID" -eq 0 ]]; then
+        echo "Do not run with sudo!"
+        exit 1
+    fi
+
+    case $os in
+        ubuntu|fedora|mac) ;;
+        *) echo "Error: Invalid OS '$os'. Use ubuntu, fedora, or mac."; exit 1 ;;
+    esac
+
+    if [[ "$os" == "mac" && "$(uname -m)" != "arm64" ]]; then
+        echo "Installer is only supported for M-series Macs."
+        exit 1
+    fi
 }
 
-fedora() {
-    exec_dir=./os/Fedora
-    os_exec
-}
+parse_flags "$@"
+validate_inputs
 
-mac() {
-    exec_dir=./os/Mac
-    os_exec
-}
-
+# Execution ----
 install_helix() {
     mkdir -p ~/Downloads
     if [ -d ~/Downloads/helix ]; then
@@ -41,91 +65,49 @@ install_helix() {
     ln -sf ~/Downloads/helix/runtime ~/.config/helix/runtime
 }
 
-install_wsl() {
-    if [[ wsl -eq 1 ]]; then
-        exec_dir=./os/WSL
-        os_exec
-    fi
-}
-
-wsl_prompt() {
-    read -r -p "Is this a WSL installation? [y/N]" response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-    then
-        wsl=1
-    fi
-}
-
-installer_prompt() {
-    read -r -p "Would you like to install programs? (rather than just copy the dotfiles and plugins) [y/N] " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-    then
-        install=1
-    fi
-}
-
-if [[ "$EUID" -eq 0 ]]; then 
-    echo "Do not run with sudo!"
-    exit
-fi
-
 mkdir -p ~/.personalrc
 
-PS3='Which OS are you installing on? '
-options=("Ubuntu" "Fedora" "Mac")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Ubuntu")
-            installer_prompt
-            wsl_prompt
-            ubuntu
-            break
-            ;;
-        "Fedora")
-            installer_prompt
-            wsl_prompt
-            fedora 
-            break
-            ;;
-        "Mac")
-            echo "Note: Installer is only supported for M-series chips."
-            installer_prompt
-            mac 
-            break
-            ;;
-        *) echo "$REPLY is an invalid option. Try again";;
-    esac
-done
+os_dir="$(echo "$os" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')"
+exec_dir="./os/${os_dir}"
+find "$exec_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
+if [[ $install -eq 1 && -f "$exec_dir/setup.sh" ]]; then
+    bash -c "$exec_dir/setup.sh"
+fi
 
 cp -rn .personalrc ~
 
 echo "Copying dotfiles..."
-cp -a dotfiles/. ~ 
+cp -a dotfiles/. ~
 
 echo "Installing Vim plugins..."
 vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 
-install_wsl
+if [[ $wsl -eq 1 ]]; then
+    exec_dir=./os/WSL
+    find "$exec_dir" -maxdepth 1 -name "*rc" -exec cp {} ~/.personalrc \;
+    if [[ -f "$exec_dir/setup.sh" ]]; then
+        bash -c "$exec_dir/setup.sh"
+    fi
+fi
 
 # Generic installation
-if [[ install -eq 1 ]]; then 
+if [[ $install -eq 1 ]]; then
     # Install fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    ~/.fzf/install --all
 
     # Install Rust
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     PATH=$PATH:~/.cargo/bin
-    cargo install tinty
     cargo install cargo-binstall --locked
-    cargo binstall zoxide --locked
-    cargo binstall lsd
-    cargo binstall ripgrep
-    cargo binstall fd-find
-    cargo binstall --locked yazi-fm yazi-cli
-    cargo binstall zellij --locked
-    cargo binstall git-delta
+    cargo binstall -y tinty
+    cargo binstall -y zoxide --locked
+    cargo binstall -y lsd
+    cargo binstall -y ripgrep
+    cargo binstall -y fd-find
+    cargo binstall -y --locked yazi-fm yazi-cli
+    cargo binstall -y zellij --locked
+    cargo binstall -y git-delta
 
     install_helix
 fi
