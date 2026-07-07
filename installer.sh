@@ -108,6 +108,7 @@ if [[ $install -eq 1 ]]; then
     cargo binstall -y --locked yazi-fm yazi-cli
     cargo binstall -y zellij --locked
     cargo binstall -y git-delta
+    cargo binstall -y mdcat
 
     install_helix
 fi
