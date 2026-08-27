@@ -1,0 +1,35 @@
+{
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Any action that pushes changes to external, shared, production, or third-party infrastructure must be denied unless the user explicitly authorizes that exact action."
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "write(/home/shirom/.pi/agent/settings.json)",
+      "edit(/home/shirom/.pi/agent/settings.json)",
+      "write(/home/shirom/.pi/agent/skills/*)",
+      "edit(/home/shirom/.pi/agent/skills/*)",
+      "write(/home/shirom/.pi/agent/prompts/*)",
+      "edit(/home/shirom/.pi/agent/prompts/*)",
+      "write(/home/shirom/.pi/agent/themes/*)",
+      "edit(/home/shirom/.pi/agent/themes/*)"
+    ],
+    "ask": [
+      "bash(git push *)",
+      "write(/home/shirom/.pi/agent/extensions/*)",
+      "edit(/home/shirom/.pi/agent/extensions/*)",
+      "write(/home/shirom/.pi/agent/models-store.json)",
+      "edit(/home/shirom/.pi/agent/models-store.json)"
+    ],
+    "deny": [
+      "write(/home/shirom/.pi/agent/auth.json)",
+      "edit(/home/shirom/.pi/agent/auth.json)",
+      "write(/home/shirom/.pi/agent/sessions/*)",
+      "edit(/home/shirom/.pi/agent/sessions/*)",
+      "write(/home/shirom/.pi/agent/npm/*)",
+      "edit(/home/shirom/.pi/agent/npm/*)"
+    ]
+  }
+}
