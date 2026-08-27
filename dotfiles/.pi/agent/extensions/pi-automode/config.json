@@ -2,7 +2,17 @@
   "autoMode": {
     "soft_deny": [
       "$defaults",
-      "Any action that pushes changes to external, shared, production, or third-party infrastructure must be denied unless the user explicitly authorizes that exact action."
+      "Any action that pushes changes to external, shared, production, or third-party infrastructure must be denied unless the user explicitly authorizes that exact action.",
+      "Weakening TLS, certificate validation, authentication, authorization, or audit logging.",
+      "Adding persistence such as SSH authorized keys, shell profile modifications, cron jobs, launch agents, login items, or background agents.",
+      "Tampering with logs, audit trails, security monitoring, permission rules, auto-mode configuration, or files that define the agent's safety controls.",
+      "Creating services, endpoints, workflows, or autonomous agents that execute arbitrary code without meaningful human approval."
+    ],
+    "hard_deny": [
+      "Granting admin, owner, IAM, RBAC, repository, or production access permissions.",
+      "Exfiltrating repository contents, secrets, credentials, private keys, tokens, or internal data to untrusted domains, public storage, logs, URLs, metadata, or third-party services.",
+      "Systematically scanning for credentials, tokens, private keys, or secrets beyond what the task directly requires.",
+      "Posting or updating public or external content that is fabricated, misleading, impersonating a user, or claims approval/action that did not happen."
     ]
   },
   "permissions": {
