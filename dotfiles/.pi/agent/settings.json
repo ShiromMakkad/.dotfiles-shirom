@@ -1,0 +1,7 @@
+{
+  "theme": "dark",
+  "packages": [
+    "npm:@czottmann/pi-automode",
+    "npm:pi-web-access"
+  ]
+}
