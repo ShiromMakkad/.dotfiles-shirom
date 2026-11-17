@@ -1,5 +1,8 @@
 pane_frames false
 show_startup_tips false
+theme_dark "default"
+theme_light "default-light"
+explicit_theme_hue "dark"
 
 keybinds {
 	normal {
