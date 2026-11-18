@@ -79,6 +79,18 @@ cp -rn .personalrc ~
 echo "Copying dotfiles..."
 cp -a dotfiles/. ~
 
+if command -v claude >/dev/null 2>&1; then
+    echo "Installing Claude Zellij plugin..."
+    claude plugin marketplace add "$PWD/shirom-marketplace" || exit 1
+    claude plugin install zellij-resume@shirom-dotfiles || exit 1
+fi
+
+if command -v codex >/dev/null 2>&1; then
+    echo "Installing Codex Zellij plugin..."
+    codex plugin marketplace add "$PWD/shirom-marketplace" || exit 1
+    codex plugin add zellij-resume@shirom-dotfiles || exit 1
+fi
+
 echo "Installing Vim plugins..."
 vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 

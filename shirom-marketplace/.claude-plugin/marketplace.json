@@ -1,0 +1,11 @@
+{
+  "name": "shirom-dotfiles",
+  "owner": { "name": "Shirom" },
+  "plugins": [
+    {
+      "name": "zellij-resume",
+      "source": "./plugins/zellij-resume",
+      "description": "Resume Codex and Claude sessions in Zellij and return to a shell on exit."
+    }
+  ]
+}

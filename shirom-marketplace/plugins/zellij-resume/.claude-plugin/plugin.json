@@ -1,0 +1,5 @@
+{
+  "name": "zellij-resume",
+  "version": "1.0.0",
+  "description": "Resume Codex and Claude sessions in Zellij and return to a shell on exit."
+}

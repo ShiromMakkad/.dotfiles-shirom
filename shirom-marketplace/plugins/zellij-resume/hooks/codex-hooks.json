@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "statusMessage": "Zellij session resume",
+            "command": "bash \"${PLUGIN_ROOT}/hooks/session-start.sh\" codex resume"
+          }
+        ]
+      }
+    ]
+  }
+}
