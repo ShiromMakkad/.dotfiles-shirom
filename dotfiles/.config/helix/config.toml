@@ -4,6 +4,9 @@ theme = "base16-tomorrow-night-eighties-shirom"
 line-number = "relative"
 true-color = true
 
+[editor.soft-wrap]
+enable = true
+
 [editor.lsp]
 display-inlay-hints = true
 
